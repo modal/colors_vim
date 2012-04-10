@@ -270,10 +270,12 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   "call <SID>X("CursorColumn", "", "333333", "", "", "235")
 
   " use only bold for the cursorline to avoid covering the background
-  hi clear CursorLine
-  hi clear CursorColumn
-  hi CursorLine cterm=bold gui=bold
-  hi CursorColumn cterm=bold gui=bold
+  highlight clear CursorLine
+  highlight clear CursorColumn
+  highlight CursorLine cterm=bold gui=bold
+  highlight CursorColumn cterm=bold gui=bold
+
+  call <SID>X("ColorColumn", "", "333333", "", "")
 
   call <SID>X("StatusLine", "c2bfa5", "000000", "reverse", "231", "", "bold,reverse")
   call <SID>X("StatusLineNC", "c2bfa5", "7f7f7f", "reverse", "231")
@@ -299,12 +301,12 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   call <SID>X("SpecialKey", "9acd32", "", "")
 
   call <SID>X("Title", "cd5c5c", "", "")
-  call <SID>X("Visual", "ffffff", "2e5e73", "bold")
-  call <SID>X("VisualNOS", "cccccc", "2e5e73", "underline")
+  call <SID>X("Visual", "", "2e5e73", "bold")
+  call <SID>X("VisualNOS", "", "254A59", "bold")
   call <SID>X("WarningMsg", "fa8072", "", "")
   call <SID>X("MatchParen", "", "606060", "bold")
 
-  call <SID>X("DiffAdd", "", "242448", "", "", "17")
+  call <SID>X("DiffAdd", "", "242464", "", "", "17")
   call <SID>X("DiffChange", "", "59244a", "", "", "53")
   call <SID>X("DiffDelete", "", "407680", "", "", "24")
   call <SID>X("DiffText", "", "b34793", "")
@@ -335,6 +337,32 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   delf <SID>grey_level
   delf <SID>grey_number
   " }}}
+else
+  " basic colorscheme for 16-color terminals
+  highlight Statement ctermfg=Yellow
+  highlight Identifier ctermfg=Green
+  highlight Type ctermfg=DarkGreen
+  highlight Comment ctermfg=Cyan
+  highlight PreProc ctermfg=Blue
+  highlight LineNr ctermfg=DarkGray
+  highlight Special ctermfg=Brown
+  highlight Constant ctermfg=Red
+
+  highlight Search ctermfg=Black ctermbg=Green
+  highlight IncSearch ctermfg=DarkGray ctermbg=White
+  highlight Visual ctermfg=White ctermbg=Blue
+  highlight Folded cterm=bold,reverse ctermfg=DarkGray ctermbg=Brown
+
+  highlight Pmenu cterm=reverse ctermfg=DarkGray ctermbg=White
+  highlight PmenuSel ctermfg=Black ctermbg=White
+  highlight PmenuSbar ctermbg=Black
+  highlight PmenuThumb ctermfg=White
+
+  " use only bold for the cursorline to avoid covering the background
+  highlight clear CursorLine
+  highlight clear CursorColumn
+  highlight CursorLine cterm=bold gui=bold
+  highlight CursorColumn cterm=bold gui=bold
 endif
 
 " vim: set fdl=0 fdm=marker:
